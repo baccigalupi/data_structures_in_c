@@ -14,16 +14,16 @@ char *test_create_array() {
 char *test_array_push() {
   Array *array = Array_create();
 
-  char *element_1 = calloc(13, sizeof(int));
+  char *element_1 = calloc(13, sizeof(char));
   strcat(element_1, "Hello World!");
-  char *element_2 = calloc(5, sizeof(int));
+  char *element_2 = calloc(5, sizeof(char));
   strcat(element_2, "huh?");
-  char *element_3 = calloc(8, sizeof(int));
+  char *element_3 = calloc(8, sizeof(char));
   strcat(element_3, "Goodbye");
 
   array_push(array, element_1);
 
-  mu_assert(array_count(array) == 1,            "array_push did not increment count");
+  mu_assert(array_count(array) == 1,              "array_push did not increment count");
   mu_assert(array_element(array, 0) == element_1, "array_push did not add element to array");
   mu_assert(array_first(array) == element_1,      "array_first is not working");
   mu_assert(array_last(array) == element_1,       "array_last is not working");
@@ -34,11 +34,11 @@ char *test_array_push() {
 char *test_array_second_push() {
   Array *array = Array_create();
 
-  char *element_1 = calloc(13, sizeof(int));
+  char *element_1 = calloc(13, sizeof(char));
   strcat(element_1, "Hello World!");
-  char *element_2 = calloc(5, sizeof(int));
+  char *element_2 = calloc(5, sizeof(char));
   strcat(element_2, "huh?");
-  char *element_3 = calloc(8, sizeof(int));
+  char *element_3 = calloc(8, sizeof(char));
   strcat(element_3, "Goodbye");
 
   array_push(array, element_1);
@@ -55,11 +55,11 @@ char *test_array_second_push() {
 char *test_array_additional_push() {
   Array *array = Array_create();
 
-  char *element_1 = calloc(13, sizeof(int));
+  char *element_1 = calloc(13, sizeof(char));
   strcat(element_1, "Hello World!");
-  char *element_2 = calloc(5, sizeof(int));
+  char *element_2 = calloc(5, sizeof(char));
   strcat(element_2, "huh?");
-  char *element_3 = calloc(8, sizeof(int));
+  char *element_3 = calloc(8, sizeof(char));
   strcat(element_3, "Goodbye");
 
   array_push(array, element_1);
@@ -77,11 +77,11 @@ char *test_array_additional_push() {
 char *test_array_pop() {
   Array *array = Array_create();
 
-  char *element_1 = calloc(13, sizeof(int));
+  char *element_1 = calloc(13, sizeof(char));
   strcat(element_1, "Hello World!");
-  char *element_2 = calloc(5, sizeof(int));
+  char *element_2 = calloc(5, sizeof(char));
   strcat(element_2, "huh?");
-  char *element_3 = calloc(8, sizeof(int));
+  char *element_3 = calloc(8, sizeof(char));
   strcat(element_3, "Goodbye");
 
   array_push(array, element_1);
@@ -106,11 +106,11 @@ char *test_array_pop() {
 char *test_array_clear() {
   Array *array = Array_create();
 
-  char *element_1 = calloc(13, sizeof(int));
+  char *element_1 = calloc(13, sizeof(char));
   strcat(element_1, "Hello World!");
-  char *element_2 = calloc(5, sizeof(int));
+  char *element_2 = calloc(5, sizeof(char));
   strcat(element_2, "huh?");
-  char *element_3 = calloc(8, sizeof(int));
+  char *element_3 = calloc(8, sizeof(char));
   strcat(element_3, "Goodbye");
 
   array_push(array, element_1);
@@ -125,11 +125,11 @@ char *test_array_clear() {
 char *test_array_destroy() {
   Array *array = Array_create();
 
-  char *element_1 = calloc(13, sizeof(int));
+  char *element_1 = calloc(13, sizeof(char));
   strcat(element_1, "Hello World!");
-  char *element_2 = calloc(5, sizeof(int));
+  char *element_2 = calloc(5, sizeof(char));
   strcat(element_2, "huh?");
-  char *element_3 = calloc(8, sizeof(int));
+  char *element_3 = calloc(8, sizeof(char));
   strcat(element_3, "Goodbye");
 
   array_push(array, element_1);
@@ -144,11 +144,11 @@ char *test_array_destroy() {
 char *test_array_clear_and_destroy() {
   Array *array = Array_create();
 
-  char *element_1 = calloc(13, sizeof(int));
+  char *element_1 = calloc(13, sizeof(char));
   strcat(element_1, "Hello World!");
-  char *element_2 = calloc(5, sizeof(int));
+  char *element_2 = calloc(5, sizeof(char));
   strcat(element_2, "huh?");
-  char *element_3 = calloc(8, sizeof(int));
+  char *element_3 = calloc(8, sizeof(char));
   strcat(element_3, "Goodbye");
 
   array_push(array, element_1);
@@ -160,7 +160,7 @@ char *test_array_clear_and_destroy() {
   return NULL;
 }
 
-char *test_expansion_number() {
+char *test_array_new_size() {
   Array *array = Array_create();
 
   array_count(array) = 9;
@@ -190,10 +190,10 @@ char *test_expansion_number() {
   return NULL;
 }
 
-char *test_expansion() {
+char *test_array_expansion() {
   Array *array = Array_create();
 
-  char *element_1 = calloc(13, sizeof(int));
+  char *element_1 = calloc(13, sizeof(char));
   strcat(element_1, "Hello World!");
 
   int i;
@@ -235,6 +235,38 @@ char *test_expansion() {
   return NULL;
 }
 
+char *test_array_get() {
+  Array *array = Array_create();
+
+  char *element_1 = calloc(13, sizeof(char));
+  strcat(element_1, "Hello World!");
+
+  array_push(array, element_1);
+
+  mu_assert(array_get(array, 0) == element_1, "array_get failed to get element in bounds");
+  mu_assert(array_get(array, -1) == NULL, "array_get did not return NULL when below array bounds");
+  mu_assert(array_get(array, 1) == NULL, "array_get did not return NULL when above array bounds");
+
+  return NULL;
+}
+
+char *test_array_set() {
+  Array *array = Array_create();
+
+  char *element_1 = calloc(13, sizeof(char));
+  strcat(element_1, "Hello World!");
+  char *element_2 = calloc(8, sizeof(char));
+  strcat(element_2, "Goodbye");
+
+  array_push(array, element_1);
+  array_set(array, 0, element_2);
+
+  mu_assert(array_get(array, 0) == element_2, "array_set failed to set the right element");
+
+  return NULL;
+}
+
+
 char *all_tests() {
   mu_suite_start();
 
@@ -246,8 +278,10 @@ char *all_tests() {
   mu_run_test(test_array_clear);
   mu_run_test(test_array_destroy);
   mu_run_test(test_array_clear_and_destroy);
-  mu_run_test(test_expansion_number);
-  mu_run_test(test_expansion);
+  mu_run_test(test_array_new_size);
+  mu_run_test(test_array_expansion);
+  mu_run_test(test_array_get);
+  mu_run_test(test_array_set);
 
   return NULL;
 }

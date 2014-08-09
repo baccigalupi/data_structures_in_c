@@ -1,0 +1,65 @@
+DEBUG tests/array_tests.c:289: ----- RUNNING: ./tests/array_tests
+DEBUG tests/array_tests.c:273: 
+----- test_create_array
+DEBUG tests/array_tests.c:274: 
+----- test_array_push
+DEBUG tests/array_tests.c:275: 
+----- test_array_second_push
+DEBUG tests/array_tests.c:276: 
+----- test_array_additional_push
+DEBUG tests/array_tests.c:277: 
+----- test_array_pop
+[31m[ERROR][0m (src/array.c:36: errno: None) array in array_pop is empty
+DEBUG tests/array_tests.c:278: 
+----- test_array_clear
+DEBUG tests/array_tests.c:279: 
+----- test_array_destroy
+DEBUG tests/array_tests.c:280: 
+----- test_array_clear_and_destroy
+DEBUG tests/array_tests.c:281: 
+----- test_array_new_size
+DEBUG tests/array_tests.c:282: 
+----- test_array_expansion
+DEBUG tests/array_tests.c:283: 
+----- test_array_get
+[31m[ERROR][0m (src/array.h:28: errno: None) array_get index is out of range
+DEBUG tests/array_tests.c:284: 
+----- test_array_set
+DEBUG tests/list_tests.c:316: ----- RUNNING: ./tests/list_tests
+DEBUG tests/list_tests.c:293: 
+----- test_create_list
+DEBUG tests/list_tests.c:295: 
+----- test_list_first_push
+DEBUG tests/list_tests.c:296: 
+----- test_list_second_push
+DEBUG tests/list_tests.c:297: 
+----- test_list_additional_pushes
+DEBUG tests/list_tests.c:299: 
+----- test_list_pop
+DEBUG tests/list_tests.c:300: 
+----- test_multiple_pops
+[31m[ERROR][0m (src/list.c:70: errno: None) list in list_pop in empty
+DEBUG tests/list_tests.c:302: 
+----- test_list_unshift
+DEBUG tests/list_tests.c:303: 
+----- test_list_unshift_second_time
+DEBUG tests/list_tests.c:304: 
+----- test_list_unshift_additional_time
+DEBUG tests/list_tests.c:306: 
+----- test_list_shift
+DEBUG tests/list_tests.c:307: 
+----- test_multiple_shifts
+[31m[ERROR][0m (src/list.c:96: errno: None) list in list_shift in empty
+DEBUG tests/list_tests.c:309: 
+----- test_clear
+DEBUG tests/list_tests.c:310: 
+----- test_destroy
+DEBUG tests/list_tests.c:311: 
+----- test_clear_and_destroy
+DEBUG tests/string_tests.c:54: ----- RUNNING: ./tests/string_tests
+DEBUG tests/string_tests.c:47: 
+----- test_create_string_from_literal
+DEBUG tests/string_tests.c:48: 
+----- test_create_string_from_alloced
+DEBUG tests/string_tests.c:49: 
+----- test_string_concat
